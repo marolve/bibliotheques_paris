@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="dc.date.created" content="%datecreated%" />
+    <title>Bibliothèques de Paris</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="stylesheet" href="bibliotheques.css" />
+  </head>
+  <body>
+    <nav class="navbar " style="background-color: #e3f2fd;">
+      <div class="container d-flex">
+        <span class="navbar-brand mb-0 h1">Bibliothèques de Paris</span>
+				<ul class="navbar-nav d-flex flex-row me-1">
+						<li class="nav-item me-3 me-lg-0">
+								<a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#infoModal"><i class="fas"><img src="info.svg" alt="informations"></i></a>
+						</li>
+				</ul>
+      </div>
+    </nav>
+    
+    <div class="container btn-group btn-group-sm flex-wrap my-1 d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group" id="btngroupday">%days%
+    </div>
+    
+    <div class="container btn-group btn-group-sm flex-wrap my-1 d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group" id="btngrouphour">%hours%
+    </div>
+
+		<div class="container">
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+			    <button class="nav-link active nav-maplist" id="map-tab" data-bs-toggle="tab" data-bs-target="#mapcontainer" type="button" role="tab" aria-controls="map-tab-pane" aria-selected="true">Carte</button>
+				</li>
+				<li class="nav-item">
+					<button class="nav-link nav-maplist" id="list-tab" data-bs-toggle="tab" data-bs-target="#tablecontainer" type="button" role="tab" aria-controls="list-tab-pane" aria-selected="true">Liste</button>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane container d-flex justify-content-center mt-2 show active" id="mapcontainer" role="tabpanel" aria-labelledby="map-tab" tabindex="0">
+					<div id='map'></div>
+				</div>
+
+				<div class="tab-pane container d-flex justify-content-center" id="tablecontainer" role="tabpanel" aria-labelledby="list-tab" tabindex="0">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Arrt</th>
+								<th scope="col">Bibliothèque</th>
+								<th scope="col">Horaires</th>
+							</tr>
+						</thead>
+						<tbody>%rows%
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="infoModalLabel">Informations</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="form-check">
+							<p>Cette page récupère la liste des horaires des bibliothèques sur le <a href="https://www.paris.fr/lieux/bibliotheques/tous-les-horaires">site de la mairie de Paris</a>.</p>
+							<p>Légende de la carte :</p>
+							<div>
+								<table class="ms-2 mb-3"><tbody>
+								<tr>
+									<td><img class="openlevel1 me-2" src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png"></td>
+									<td>Bibliothèque ouverte à l'horaire sélectionné</td>
+								</tr>
+								<tr>
+									<td><img class="openlevel2" src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png"></td>
+									<td>Bibliothèque partiellement ouverte à l'horaire sélectionné</td>
+								</tr>
+								<tr>
+									<td><img class="openlevel0" src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png"></td>
+									<td>Bibliothèque fermée à l'horaire sélectionné</td>
+								</tr>
+								</tbody></table>
+							</div>
+							<p>Liste :</p>
+							<div>
+								<table class="table ms-2 mb-4"><tbody>
+								<tr class="table-info">
+									<td>Bibliothèque ouverte à l'horaire sélectionné</td>
+								</tr>
+								<tr>
+									<td style="font-style: italic;">Bibliothèque partiellement ouverte à l'horaire sélectionné</td>
+								</tr>
+								</tbody></table>
+							</div>
+							<p>les bibliothèques n'ayant aucun horaire d'ouverture le jour sélectionné ne sont pas affichées.</p>
+							<p class="fw-lighter">Cette page a été générée le %datelabel%.</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="bibliotheques.js"></script>
+  </body>
+</html>
