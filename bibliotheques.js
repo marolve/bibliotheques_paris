@@ -92,6 +92,7 @@ var bibliotheques = [
 { name: 'Bibliothèque Jacqueline Dreyfus-Weill ', x: 48.87629, y: 2.38818 },
 { name: 'Bibliothèque Claude Lévi-Strauss', x: 48.8866840, y: 2.3712948 },
 { name: 'Bibliothèque Benjamin Rabier', x: 48.8927830, y: 2.3790539 },
+{ name: 'Médiathèque James Baldwin', x: 48.876730, y: 2.396590 },
 { name: 'Bibliothèque Place des Fêtes', x: 48.8794010, y: 2.3973642 },
 { name: 'Archives de Paris - Salle de lecture et bibliothèque', x: 48.87909, y: 2.4067 },
 { name: 'Bibliothèque Oscar Wilde', x: 48.8720638, y: 2.3998952 },
