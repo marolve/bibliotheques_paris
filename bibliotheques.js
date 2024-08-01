@@ -46,7 +46,7 @@ var bibliotheques = [
 { name: 'Bibliothèque André Malraux', x: 48.8479961, y: 2.3275248 },
 { name: 'Bibliothèque Amélie', x: 48.8580602, y: 2.3089956 },
 { name: 'Bibliothèque Saint-Simon', x: 48.85691, y: 2.32009 },
-{ name: 'Bibliothèque Europe', x: 48.8777273, y: 2.3175191 },
+{ name: 'Bibliothèque Jean d\'Ormesson (ex-Europe)', x: 48.8777273, y: 2.3175191 },
 { name: 'Bibliothèque Courcelles', x: 48.8780917, y: 2.3027106 },
 { name: 'Bibliothèque Louise Walser-Gaillard', x: 48.88151, y: 2.33244 },
 { name: 'Bibliothèque Valeyre', x: 48.8779906, y: 2.3450959 },
