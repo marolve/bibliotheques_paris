@@ -100,7 +100,7 @@ var bibliotheques = [
 { name: 'Bibliothèque Oscar Wilde', x: 48.8720638, y: 2.3998952 },
 { name: 'Bibliothèque Naguib Mahfouz', x: 48.8700484, y: 2.3852126 },
 { name: 'Bibliothèque Jeunesse Mortier', x: 48.8714000, y: 2.4083505 },
-{ name: 'Bibliothèque Sorbier', x: 48.8659982, y: 2.3928863 },
+{ name: 'Bibliothèque Maryse Condé', x: 48.8659982, y: 2.3928863 },
 { name: 'Médiathèque Marguerite Duras', x: 48.85992, y: 2.403 },
 { name: 'Bibliothèque Assia Djebar', x: 48.8492175, y: 2.4121327 }
 ];
