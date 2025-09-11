@@ -57,7 +57,6 @@ var bibliotheques = [
 { name: 'Bibliothèque François Villon', x: 48.8772247, y: 2.3706998 },
 { name: 'Bibliothèque Toni Morrison - Parmentier', x: 48.8602360, y: 2.3791681 },
 { name: 'Médiathèque Violette Leduc', x: 48.8515628, y: 2.3840327 },
-{ name: 'Maison Paris Nature', x: 48.8396348 , y: 2.4425604 },
 { name: 'Bibliothèque Saint-Eloi', x:  48.8454696, y: 2.3871278 },
 { name: 'Bibliothèque de la Maison Paris Nature', x: 48.8396, y: 2.44158 },
 { name: 'Bibliothèque Jeunesse Diderot', x:  48.8459092, y: 2.3777264 },
