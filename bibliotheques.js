@@ -94,7 +94,6 @@ var bibliotheques = [
 { name: 'Bibliothèque Louise Michel', x: 48.8533051, y: 2.4010825 },
 { name: 'Bibliothèque Benjamin Rabier', x: 48.8927830, y: 2.3790539 },
 { name: 'Médiathèque James Baldwin', x: 48.876730, y: 2.396590 },
-{ name: 'Bibliothèque Place des Fêtes', x: 48.8794010, y: 2.3973642 },
 { name: 'Archives de Paris - Salle de lecture et bibliothèque', x: 48.87909, y: 2.4067 },
 { name: 'Bibliothèque Oscar Wilde', x: 48.8720638, y: 2.3998952 },
 { name: 'Bibliothèque Naguib Mahfouz', x: 48.8700484, y: 2.3852126 },
