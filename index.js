@@ -181,7 +181,7 @@ function fillHtml(html, data) {
 	let bibliothequeRows = '';
 	// schedule labels : 'data-schedule-text1="07:00 à 08:30<br/>11:30 à 13:30" 
 	// schedule datas : data-schedule-data1="420-510;690-810"
-	let row = '\n					<tr data-name="%name%" data-link="%link%" %schedulelabels% %scheduledatas%> <td>%arr%</td> <td><a href="%link%">%name%</a></td> <td class="schedulecell"></td> </tr>';
+	let row = '\n					<tr data-name="%name%" data-link="%link%" %schedulelabels% %scheduledatas%> <td>%arr%</td> <td><a href="%link%">%name%</a></td> <td class="schedulecell"></td> <td class="bibstatus" style="display: none;"></td> </tr>';
 	for (const bibliotheque of data.bibliotheques) {
 		if (bibliotheque.schedules.length > 7) {
 			let scheduleLabels = '';

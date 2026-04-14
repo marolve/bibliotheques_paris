@@ -14,7 +14,7 @@
   <body>
     <nav class="navbar " style="background-color: #e3f2fd;">
       <div class="container d-flex">
-        <span class="navbar-brand mb-0 h1">Bibliothèques de Paris</span>
+        <span id="maintitle" class="navbar-brand mb-0 h1">Bibliothèques de Paris</span>
 				<ul class="navbar-nav d-flex flex-row me-1">
 						<li class="nav-item me-3 me-lg-0">
 								<a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#infoModal"><i class="fas"><img src="info.svg" alt="informations"></i></a>
@@ -50,6 +50,7 @@
 								<th scope="col">Arrt</th>
 								<th scope="col">Bibliothèque</th>
 								<th scope="col">Horaires</th>
+								<th scope="col" id="bibstatusheader" style="display: none;">Statut</th>
 							</tr>
 						</thead>
 						<tbody>%rows%
