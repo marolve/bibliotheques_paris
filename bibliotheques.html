@@ -17,7 +17,7 @@
         <span id="maintitle" class="navbar-brand mb-0 h1">Bibliothèques de Paris</span>
 				<ul class="navbar-nav d-flex flex-row me-1">
 						<li class="nav-item me-3 me-lg-0">
-								<a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#infoModal"><i class="fas"><img src="info.svg" alt="informations"></i></a>
+								<a id="modalcaller" class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#infoModal"><i class="fas"><img src="info.svg" alt="informations"></i></a>
 						</li>
 				</ul>
       </div>
@@ -101,6 +101,60 @@
 							</div>
 							<p>les bibliothèques n'ayant aucun horaire d'ouverture le jour sélectionné ne sont pas affichées.</p>
 							<p class="fw-lighter">Cette page a été générée le %datelabel%.</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Doc -->
+		<div class="modal fade" id="infoModalDoc" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="infoModalLabel">Informations</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="form-check">
+							<p>Cette page affiche la disponibilité du document en fonction des horaires des bibliothèques.</p>
+							<p>Les horaires proviennent du <a href="https://www.paris.fr/lieux/bibliotheques/tous-les-horaires">site de la mairie de Paris</a>.</p>
+							<p>Légende de la carte :</p>
+							<div>
+								<table class="ms-2 mb-3"><tbody>
+								<tr>
+									<td><img class="openlevel1 me-2" src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png"></td>
+									<td>Document disponible dans la bibliothèque ouverte à l'horaire sélectionné</td>
+								</tr>
+								<tr>
+									<td><img class="openlevel2" src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png"></td>
+									<td>Document disponible dans la bibliothèque partiellement ouverte à l'horaire sélectionné</td>
+								</tr>
+								<tr>
+									<td><img class="openlevel0" src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png"></td>
+									<td>Document disponible dans la bibliothèque fermée à l'horaire sélectionné</td>
+								</tr>
+								<tr>
+									<td><img class="openlevel3" src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png"></td>
+									<td>Document non disponible dans la bibliothèque</td>
+								</tr>
+								</tbody>
+								</table>
+							</div>
+							<p>Liste :</p>
+							<div>
+								<table class="table ms-2 mb-4"><tbody>
+								<tr class="table-info">
+									<td>Document disponible dans la bibliothèque ouverte à l'horaire sélectionné</td>
+								</tr>
+								<tr>
+									<td style="font-style: italic;">Document disponible dans la bibliothèque partiellement ouverte à l'horaire sélectionné</td>
+								</tr>
+								</tbody></table>
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">

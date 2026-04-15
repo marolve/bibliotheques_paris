@@ -8,6 +8,7 @@ $(window).on( 'load', function() {
 	readHoldingsParam();
 	
 	if (holdings != null) {
+		$("#modalcaller").attr('data-bs-target', '#infoModalDoc');
 		$("#maintitle").html(holdings.title);
 		$("#bibstatusheader").show();
 	}
@@ -321,10 +322,10 @@ function updateList() {
 			$(this).addClass('table-info');
 		}
 		
-		if (openLevel <= 0) {
-			$(this).hide();
-		} else {
+		if (openLevel == 1 || openLevel == 2) {
 			$(this).show();
+		} else {
+			$(this).hide();
 		}
 		if (openLevel >= 0) {
 			if (bibliotheque != null) {
