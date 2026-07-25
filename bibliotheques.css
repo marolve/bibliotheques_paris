@@ -45,3 +45,8 @@ img.openlevel3 {
 .nav-tabs {
     margin-bottom: 0;
 }
+
+#maintitle {
+	text-overflow: ellipsis;
+  overflow: hidden;
+}
