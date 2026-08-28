@@ -1,6 +1,7 @@
 
 var map;
 var markers = [];
+var circleIcon;
 var holdings = null;
 
 $(window).on( 'load', function() {
@@ -14,6 +15,8 @@ $(window).on( 'load', function() {
 	}
 	
 	initMap();
+	
+	addCircles();
 	
 	$('.nav-maplist').click(function() {
 		event.preventDefault();
@@ -142,6 +145,24 @@ function removeAllMarkers() {
 		map.removeLayer(marker);
 	});
 	markers = [];
+}
+function addCircle(lat, lon) {
+	var marker = L.marker([lat, lon], {
+				icon: circleIcon
+		}).addTo(map);
+	marker._icon.classList.add("circle");
+}
+
+function addCircles() {
+	circleIcon = L.icon({
+			iconUrl: 'circle16.png',
+			iconSize: [16, 16],
+			iconAnchor: [8, 8],
+	});
+	
+	bibliotheques.forEach( bibliotheque => {
+		addCircle( bibliotheque.x, bibliotheque.y);
+	});
 }
 
 function addMarker(lat, lon, text, openLevel) {

@@ -35,6 +35,10 @@ img.openlevel3 {
 	filter: grayscale(1) brightness(2) opacity(0.7);
 }
 
+img.circle { 
+	filter: opacity(0.4);
+}
+
 .tab-content {
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
