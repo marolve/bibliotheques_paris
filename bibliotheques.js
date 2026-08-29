@@ -1,6 +1,5 @@
 
 var map;
-var markers = [];
 var circleIcon;
 var holdings = null;
 
@@ -15,8 +14,6 @@ $(window).on( 'load', function() {
 	}
 	
 	initMap();
-	
-	addCircles();
 	
 	$('.nav-maplist').click(function() {
 		event.preventDefault();
@@ -125,6 +122,12 @@ function initMap() {
 			attribution: '© OpenStreetMap'
 	}).addTo(map);
 	
+	circleIcon = L.icon({
+			iconUrl: 'circle16.png',
+			iconSize: [16, 16],
+			iconAnchor: [8, 8],
+	});
+	
 /*	L.control.locate({
 		drawCircle: true
 	}).addTo(map);
@@ -141,35 +144,42 @@ function findBibliotheque(name) {
 }
 
 function removeAllMarkers() {
-	markers.forEach(marker => {
-		map.removeLayer(marker);
-	});
-	markers = [];
-}
-function addCircle(lat, lon) {
-	var marker = L.marker([lat, lon], {
-				icon: circleIcon
-		}).addTo(map);
-	marker._icon.classList.add("circle");
-}
-
-function addCircles() {
-	circleIcon = L.icon({
-			iconUrl: 'circle16.png',
-			iconSize: [16, 16],
-			iconAnchor: [8, 8],
-	});
-	
 	bibliotheques.forEach( bibliotheque => {
-		addCircle( bibliotheque.x, bibliotheque.y);
+		if (bibliotheque.marker) {
+			map.removeLayer(bibliotheque.marker);
+			bibliotheque.marker = null;
+		}
 	});
 }
 
-function addMarker(lat, lon, text, openLevel) {
-	marker = L.marker([lat, lon]).addTo(map);
+function addMarker(bibliotheque, isCircle, textInformation, openLevel) {
+	if (bibliotheque.marker) {
+		map.removeLayer(marker);
+		bibliotheque.marker = null;
+	}
+	var lat = bibliotheque.x;
+	var lon = bibliotheque.y;
+	var text = '';
+	if (bibliotheque.link) {
+		text += '<h6><a href="' + bibliotheque.link + '">' + bibliotheque.name + '</a></h6>';
+	} else {
+		text += bibliotheque.name;
+	}
+	if (textInformation) {
+		text += '<br/>' + textInformation;
+	}
+	var marker;
+	if (!isCircle) {
+		marker = L.marker([lat, lon]).addTo(map);
+		marker._icon.classList.add("openlevel" + openLevel);
+	} else {
+		marker = L.marker([lat, lon], { 
+				icon: circleIcon
+			}).addTo(map);
+		marker._icon.classList.add("circle");
+	}
 	marker.bindPopup(text);
-	marker._icon.classList.add("openlevel" + openLevel);
-	markers.push(marker);
+	bibliotheque.marker = marker;
 	return marker;
 }
 
@@ -253,6 +263,9 @@ function updateList() {
 		let scheduleText = '';
 		
 		let bibliotheque = findBibliotheque(bibliothequeName);
+		if (bibliotheque) {
+			bibliotheque.link = bibliothequeLink;
+		}
 		
 		var holdingsBib = null;
 		if (bibliotheque != null && holdings != null) {
@@ -350,9 +363,18 @@ function updateList() {
 		}
 		if (openLevel >= 0) {
 			if (bibliotheque != null) {
-				let bibliothequeText = '<h6><a href="' + bibliothequeLink + '">' + bibliotheque.name + '</a></h6><br/>' + scheduleTextComplete;
-				addMarker(bibliotheque.x, bibliotheque.y, bibliothequeText, openLevel);
+				addMarker(bibliotheque, false, scheduleTextComplete, openLevel);
 			}
+		}
+	});
+	
+	bibliotheques.forEach( bibliotheque => {
+		if (!bibliotheque.marker) {
+			var textInformation;
+			if (!holdings) {
+				textInformation = 'Fermée';
+			}
+			addMarker(bibliotheque, true, textInformation);
 		}
 	});
 }
