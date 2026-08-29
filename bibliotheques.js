@@ -187,6 +187,15 @@ function addMarker(bibliotheque, isCircle, textInformation, openLevel) {
 function update() {
 	
 	updateNav();
+	
+	var currentDayNumber = new Date().getDate();
+	var currentHour = new Date().getHours();
+	if (currentHour < 8)
+		currentHour = 8;
+	if (currentHour > 19) {
+		currentHour = 8;
+		currentDayNumber += 1;
+	}
 
 	let dayclicked = $('input[name=btnradioday]:checked');
 	if (!dayclicked.length) {
@@ -194,7 +203,6 @@ function update() {
 		if (dayidPrevious) {
 			$('#btnradioday'+dayidPrevious).click();
 		} else {
-			const currentDayNumber = new Date().getDate();
 			$('.btnradiodaynumber'+currentDayNumber).click();
 		}
 	}
@@ -205,7 +213,6 @@ function update() {
 		if (houridPrevious) {
 			$('#btnradiohour'+houridPrevious).click();
 		} else {
-			const currentHour = new Date().getHours();
 			let hourText = '';
 			if (currentHour < 10)
 				hourText = '0';
