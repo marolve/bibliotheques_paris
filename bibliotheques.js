@@ -166,7 +166,7 @@ function addMarker(bibliotheque, isCircle, textInformation, openLevel) {
 		text += bibliotheque.name;
 	}
 	if (textInformation) {
-		text += '<br/>' + textInformation;
+		text += textInformation;
 	}
 	var marker;
 	if (!isCircle) {
@@ -339,17 +339,20 @@ function updateList() {
 			if (holdingsBib == null) {
 				openLevel = -1;
 			} else {
-				if (openLevel >= 0) {
-					var bibStatusElt = $(this).find('.bibstatus');
-					bibStatusElt.html(holdingsBib.status);
-					bibStatusElt.show();
-					scheduleTextComplete = scheduleTextComplete + '<br/>' + holdingsBib.status;
-					if (holdingsBib.date != null) {
-						openLevel = 3;
-					}
-					if (!holdingsBib.visible) {
-						openLevel = -1;
-					}
+				var bibStatusElt = $(this).find('.bibstatus');
+				bibStatusElt.html(holdingsBib.status);
+				bibStatusElt.show();
+				if (scheduleTextComplete.length == 0)
+					scheduleTextComplete = 'Fermée';
+				scheduleTextComplete = scheduleTextComplete + '<br/>' + holdingsBib.status;
+				if (holdingsBib.date != null) {
+					openLevel = 3;
+				}
+				if (openLevel == -1) { // fermée, mais document disponible
+					openLevel = 0;
+				}
+				if (!holdingsBib.visible) {
+					openLevel = -1;
 				}
 			}
 		}
