@@ -374,8 +374,6 @@ function updateList() {
 		}
 		
 		let scheduleInfo = analyseSchedule(Number(dayid), scheduleDatas, hour);
-		console.log(bibliothequeName);
-		console.log(scheduleInfo);
 		
 		let openLevel = -1;
 		if (scheduleInfo.timeStatus == TimeStatus.TS_WITHIN)
@@ -505,7 +503,6 @@ function readHoldingsParam() {
 				date: holdingsDate,
 				bibs: holdingsBibs
 			};
-			console.log(holdings);
 		}
 	}
 }
