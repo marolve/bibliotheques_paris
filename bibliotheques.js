@@ -194,7 +194,9 @@ function update() {
 		currentHour = 8;
 	if (currentHour > 19) {
 		currentHour = 8;
-		currentDayNumber += 1;
+		var tomorrow = new Date();
+		tomorrow.setDate(tomorrow.getDate() + 1);
+		currentDayNumber = tomorrow.getDate();
 	}
 
 	let dayclicked = $('input[name=btnradioday]:checked');
