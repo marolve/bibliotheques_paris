@@ -347,14 +347,9 @@ function updateList() {
 		let bibliothequeName = $(this).attr('data-name');
 		let bibliothequeLink = $(this).attr('data-link');
 		let scheduleDatas = [];
-		let scheduleTextCompletes = [];
 		for (daytemp = Number(dayid); daytemp <= 10; daytemp++) {
 			scheduleDatas.push( $(this).attr('data-schedule-data' + daytemp));
-			scheduleTextCompletes.push( $(this).attr('data-schedule-text' + daytemp));
 		}
-		let scheduleData = $(this).attr('data-schedule-data' + dayid);
-		let scheduleTextComplete = $(this).attr('data-schedule-text' + dayid);
-		let scheduleText = '';
 		
 		let bibliotheque = findBibliotheque(bibliothequeName);
 		if (bibliotheque) {
@@ -383,7 +378,7 @@ function updateList() {
 			openLevel = 2;
 		if (scheduleInfo.timeStatus == TimeStatus.TS_BEFORE)
 			openLevel = 0;
-		scheduleText = scheduleInfo.text;
+		let scheduleText = scheduleInfo.text;
 		let scheduleTextPopup = '';
 		if (scheduleText.length > 0) {
 			if (scheduleTextPopup.length > 0)
@@ -399,14 +394,9 @@ function updateList() {
 				var bibStatusElt = $(this).find('.bibstatus');
 				bibStatusElt.html(holdingsBib.status);
 				bibStatusElt.show();
-				if (scheduleTextComplete.length == 0)
-					scheduleTextComplete = 'Fermée';
-				scheduleTextComplete = scheduleTextComplete + '<br/>' + holdingsBib.status;
+				scheduleTextPopup = holdingsBib.status + '<br/>' + scheduleTextPopup;
 				if (holdingsBib.date != null) {
 					openLevel = 3;
-				}
-				if (openLevel == -1) { // fermée, mais document disponible
-					openLevel = 0;
 				}
 				if (!holdingsBib.visible) {
 					openLevel = -1;
