@@ -235,11 +235,19 @@ function updateNav() {
 	}
 }
 
+const MonthLabels = [ "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre" ];
+
+function getLabelDate(label, monthNumber) {
+	// lun. 12 -> lundi 12
+	label = label.replace('lun.', 'lundi').replace('mar.', 'mardi').replace('mer.', 'mercredi').replace('jeu.', 'jeudi').replace('ven.', 'vendredi').replace('sam.', 'samedi').replace('dim.', 'dimanche');
+	label += ' ' + MonthLabels[monthNumber];
+	return label;
+}
+
 const TimeStatus = {
 	TS_BEFORE: 'TS_BEFORE',						// Avant
 	TS_WITHIN: 'TS_WITHIN',						// Pendant
-	TS_OVERLAPPING: 'TS_OVERLAPPING',	// Entre deux horaires
-	TS_AFTER: 'TS_AFTER'							// Après
+	TS_OVERLAPPING: 'TS_OVERLAPPING'	// Entre deux horaires
 };
 
 function analyseSchedule(daystart, scheduleDatas, hour) {
@@ -277,15 +285,13 @@ function analyseSchedule(daystart, scheduleDatas, hour) {
 							if (i > 0) {
 								if (text.length > 0)
 									text += '<br/>';
-								text += 'Prochaine ouverture : ' + $('label[for="btnradioday' + (daystart + i) + '"]').text();
+								let btnradioday = 'btnradioday' + (daystart + i);
+								text += 'Prochaine ouverture : ' + getLabelDate( $('label[for="' + btnradioday + '"]').text(), $('#' + btnradioday).attr('data-month-number'));
 								addTextOnce = true;
 							} else {
 								addTextAllDay = true;
 							}
 						}
-						/*if (timeend > high && start == -1) {
-							timeStatus = TimeStatus.TS_AFTER;
-						}*/
 						if (i == 0) {
 							if (timestartok && timeendok) {
 								timeStatus = TimeStatus.TS_WITHIN;
@@ -381,8 +387,6 @@ function updateList() {
 		let scheduleText = scheduleInfo.text;
 		let scheduleTextPopup = '';
 		if (scheduleText.length > 0) {
-			if (scheduleTextPopup.length > 0)
-				scheduleTextPopup += '<br/>';
 			scheduleTextPopup += scheduleText;
 		}
 		
