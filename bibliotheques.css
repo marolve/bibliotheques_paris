@@ -20,7 +20,7 @@
 }	
 
 img.openlevel0 { 
-	filter: grayscale(1) brightness(1.6);
+	filter: grayscale(1) brightness(1.4);
 }
 
 img.openlevel1 { 
@@ -32,6 +32,10 @@ img.openlevel2 {
 }
 
 img.openlevel3 { 
+	filter: grayscale(1) brightness(1.8);
+}
+
+img.openlevel4 { 
 	filter: grayscale(1) brightness(2) opacity(0.7);
 }
 
