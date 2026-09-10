@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,11 +15,16 @@
     <nav class="navbar " style="background-color: #e3f2fd;">
       <div class="container d-flex">
         <span id="maintitle" class="navbar-brand mb-0 h1">Bibliothèques de Paris</span>
-				<ul class="navbar-nav d-flex flex-row me-1">
-						<li class="nav-item me-3 me-lg-0">
-								<a id="modalcaller" class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#infoModal"><i class="fas"><img src="info.svg" alt="informations"></i></a>
-						</li>
-				</ul>
+				<div class="dropdown-center">
+            <button class="btn navbar-toggler" type="button" data-bs-toggle="dropdown" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+						<ul class="dropdown-menu dropdown-menu-end">
+								<li><a class="dropdown-item" href="/">Accueil</a></li>
+								<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#infoModal">Informations</a></li>
+						</ul>
+				<div>
       </div>
     </nav>
     
